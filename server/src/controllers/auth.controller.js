@@ -83,3 +83,20 @@ export const logout = (req, res) => {
 
   return res.sendStatus(200);
 };
+
+export const profile = async (req, res) => {
+  const foundUser = await User.findById(req.user.id);
+
+  if (!foundUser)
+    return res.status(400).json({ message: "Usuario no encontrado" });
+
+  res.json({
+    id: foundUser._id,
+    nombre: foundUser.nombre,
+    apellido: foundUser.apellido,
+    phone: foundUser.phone,
+    email: foundUser.email,
+    createdAt: foundUser.createdAt,
+    updatedAt: foundUser.updatedAt,
+  });
+};
