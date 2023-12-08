@@ -1,0 +1,1 @@
+Aqui definimos todas las rutas o los endpoints que el backend puede pedir

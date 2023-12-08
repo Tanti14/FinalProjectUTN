@@ -1,0 +1,1 @@
+En controllers guardamos las funciones que se van a ejecutar cuando visitemos una ruta/url o endpoint

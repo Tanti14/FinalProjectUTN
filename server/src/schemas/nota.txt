@@ -1,0 +1,1 @@
+Mediante una libreria llamada Zod, vamos a crear esquemas de validacion de datos, los cuales se van a ejecutar cuando la informacion llega al backend

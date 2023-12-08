@@ -1,0 +1,2 @@
+En los middlewares guaramos las funciones de validacion de autenticacion que se ejecutan antes de llegar al final del endpoint
+esto con el objetivo de verificar los datos de quien puede acceder a cierta informacion o hacer tal cosa y quien no.
