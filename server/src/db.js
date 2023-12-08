@@ -1,5 +1,6 @@
 /* Aqui hacemos la conexion a la base de datos */
 import mongoose from "mongoose";
+import { MONGODB_URI } from "./config.js";
 
 export const connectDB = async () => {
   try {
