@@ -8,6 +8,9 @@ import {
   updateAnuncio,
 } from "../controllers/ads.controller.js";
 
+import { validateSchema } from "../middlewares/schemaValidator.js";
+import { createAnuncioSchema } from "../schemas/ad.schema.js";
+
 const router = Router();
 
 /* Seteamos las rutas para el CRUD de los anuncios */
@@ -15,7 +18,7 @@ const router = Router();
 
 router.get("/anuncios", authRequire, getAnuncios);
 router.get("/anuncios/:id", authRequire, getAnuncio);
-router.post("/anuncios", authRequire, createAnuncio);
+router.post("/anuncios", authRequire, validateSchema(createAnuncioSchema), createAnuncio);
 router.delete("/anuncios/:id", authRequire, deleteAnuncio);
 router.put("/anuncios/:id", authRequire, updateAnuncio);
 
