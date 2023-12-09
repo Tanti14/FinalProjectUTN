@@ -41,5 +41,5 @@ export const loginSchema = z.object({
   password: z.string({
     required_error: "Porfavor, ingrese su contraseña",
     invalid_type_error: "El tipo de dato ingresado no es valido",
-  }),
+  }).min(6, {message: "La contraseña es muy corta"}),
 });
