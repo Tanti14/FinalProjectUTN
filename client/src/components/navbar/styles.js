@@ -6,7 +6,7 @@ export const HeaderSection = styled.header`
   align-items: center;
   background-color: #67729d;
   width: 100%;
-  height: 125px;
+  height: 100px;
   position: fixed;
   top: 0;
   z-index: 10;
@@ -29,7 +29,7 @@ export const NavContainer = styled.nav`
 export const NavImgContainer = styled.div`
   width: 20%;
   img {
-    width: 250px;
+    width: 200px;
   }
 `;
 

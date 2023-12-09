@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Register = () => {
   const {
@@ -21,7 +21,7 @@ export const Register = () => {
   });
 
   return (
-    <div className="w-full mt-32">
+    <div className="flex items-center justify-center mt-28 p-20">
       <div className="bg-zinc-800 max-w-md p-10 rounded-md">
         {errores.map((error, i) => (
           <div className="bg-red-500 p-2 text-white rounded-md flex justify-center my-2" key={i}>
@@ -70,8 +70,9 @@ export const Register = () => {
           {errors.password && (
             <p className="text-red-500">Ingrese una contraseña</p>
           )}
-          <button type="submit">Registrarme</button>
+          <button type="submit" className="text-white p-2 bg-cyan-700 rounded-md w-full my-2 hover:scale-105">Registrarme</button>
         </form>
+        <p className="flex justify-between items-center my-2 text-white">Ya tienes una cuenta? <Link to="/login" className="font-bold hover:underline">Iniciar Sesión</Link></p>
       </div>
     </div>
   );

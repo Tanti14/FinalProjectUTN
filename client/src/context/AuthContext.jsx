@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState } from "react";
-import { registerRequest } from "../api/auth";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { registerRequest, loginRequest } from "../api/auth";
 
 export const AuthContext = createContext();
 
@@ -17,10 +17,11 @@ export const AuthProvider = ({ children }) => {
   const [isAuth, setIsAuth] = useState(false);
   const [errores, setErrores] = useState([]);
 
+  /* Funcion de registro */
   const signup = async (user) => {
     try {
       const res = await registerRequest(user);
-      console.log(res.data);
+      /* console.log(res.data); */
       setUser(res.data);
       setIsAuth(true);
     } catch (error) {
@@ -29,9 +30,34 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  /* Funcion de inicio de sesion */
+  const signin = async (user) => {
+    try {
+      const res = await loginRequest(user);
+      /* console.log(res.data); */
+      setUser(res.data);
+      setIsAuth(true);
+    } catch (error) {
+      if (Array.isArray(error.response.data)) {
+        return setErrores(error.response.data);
+      }
+      setErrores([error.response.data.message]);
+    }
+  };
+
+  /* Funcion de eliminacion de errores */
+  useEffect(() => {
+    if (errores.length > 0) {
+      const timer = setTimeout(() => {
+        setErrores([]);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [errores]);
+
   //prettier-ignore
   return (
-    <AuthContext.Provider value={{user, isAuth, errores, signup}}>
+    <AuthContext.Provider value={{user, isAuth, errores, signup, signin}}>
         {children}
     </AuthContext.Provider>
   );
