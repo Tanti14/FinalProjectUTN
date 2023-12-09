@@ -6,8 +6,8 @@ export const AboutScreen = () => {
     <AboutSection>
       <AboutInfo>
         <Header>
-          <h1>¡Bienvenidos a EMPRENTUC!</h1>
-          <h2> El corazón de los microemprendedores en Tucumán</h2>
+          <h1 className="font-bold text-3xl text-black">¡Bienvenidos a EMPRENTUC!</h1>
+          <h2 className="font-bold text-1xl text-black"> El corazón de los microemprendedores en Tucumán</h2>
         </Header>
         <TextContainer>
           <p>

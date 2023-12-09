@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 
 * {
   padding: 0;
@@ -7,4 +12,8 @@
   list-style-type: none;
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background: #202020;
 }

@@ -24,12 +24,13 @@ export const AboutInfo = styled.div`
   margin: 60px;
   padding: 60px;
   gap: 15px;
+ 
 
   background: rgba(255, 255, 255, 0.3);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(6.6px);
-  -webkit-backdrop-filter: blur(6.6px);
+  -webkit-backdrop-filter: blur(6.6px); 
 `;
 
 export const Header = styled.div`
@@ -48,4 +49,5 @@ export const TextContainer = styled.div`
   width: 100%;
   gap: 15px;
   font-size: 18px;
+  text-align: justify;
 `;
