@@ -15,7 +15,7 @@ export const LoginScreen = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuth) navigate("/");
+    if (isAuth) navigate("/mis-anuncios");
   }, [isAuth]);
 
   const onSubmit = handleSubmit((values) => {
@@ -36,6 +36,7 @@ export const LoginScreen = () => {
             placeholder="Correo electronico"
             {...register("email", { required: true })}
             className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+            autoFocus
           />
           {errors.email && <p className="text-red-500">Ingrese su email</p>}
           <input

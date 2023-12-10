@@ -12,8 +12,11 @@ import {
   MobileNavbarBtn,
   UserBtnContainer,
 } from "./styles";
+import { useAuth } from "../../context/AuthContext";
 
 export const Navbar = () => {
+  const { isAuth, user } = useAuth();
+
   /* 0 = Cerrado
      1 = Abierto 
   */
@@ -121,14 +124,6 @@ export const Navbar = () => {
           >
             Sobre Nosotros
           </NavLink>
-         {/*  <NavLink
-            to="/contact"
-            style={({ isActive }) => ({
-              textDecoration: isActive ? "underline" : "none",
-            })}
-          >
-            Informar un Problema
-          </NavLink> */}
         </NavBtnContainer>
 
         <NavLink>
@@ -141,8 +136,17 @@ export const Navbar = () => {
         </NavLink>
 
         <UserBtnContainer ref={refUserBtns}>
-          <NavLink to="/login">Iniciar Sesion</NavLink>
-          <NavLink to="/register">Registrarse</NavLink>
+          {isAuth ? (
+            <>
+              <NavLink to="/login">Perfil</NavLink>
+              <NavLink to="/register">Cerrar Sesión</NavLink>
+            </>
+          ) : (
+            <>
+              <NavLink to="/login">Iniciar Sesion</NavLink>
+              <NavLink to="/register">Registrarse</NavLink>
+            </>
+          )}
         </UserBtnContainer>
       </NavContainer>
     </HeaderSection>

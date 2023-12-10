@@ -7,7 +7,7 @@ export const AboutSection = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 122px;
+  margin-top: 100px;
   background-image: url(${bg});
   background-size: cover;
   background-position: center;
