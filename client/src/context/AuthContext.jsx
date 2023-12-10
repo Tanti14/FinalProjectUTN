@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { registerRequest, loginRequest } from "../api/auth";
+import { registerRequest, loginRequest, verifyTokenRequest } from "../api/auth";
+import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
 
@@ -16,6 +17,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuth, setIsAuth] = useState(false);
   const [errores, setErrores] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   /* Funcion de registro */
   const signup = async (user) => {
@@ -55,9 +57,40 @@ export const AuthProvider = ({ children }) => {
     }
   }, [errores]);
 
+  /* Funcion para verificar la existencia de una cookie en el navegador */
+  const checkLogin = async () => {
+    const cookies = Cookies.get();
+    if (!cookies.token) {
+      setIsAuth(false);
+      setLoading(false);
+      return setUser(null);
+    }
+
+    try {
+      const res = await verifyTokenRequest(cookies.token);
+      if (!res.data) {
+        setIsAuth(false);
+        setLoading(false);
+        return;
+      }
+
+      setIsAuth(true);
+      setUser(res.data);
+      setLoading(false);
+    } catch (error) {
+      setIsAuth(false);
+      setUser(null);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
+
   //prettier-ignore
   return (
-    <AuthContext.Provider value={{user, isAuth, errores, signup, signin}}>
+    <AuthContext.Provider value={{user, isAuth, errores, loading, signup, signin}}>
         {children}
     </AuthContext.Provider>
   );
