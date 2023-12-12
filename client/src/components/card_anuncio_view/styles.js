@@ -26,7 +26,7 @@ export const CardImgContainer = styled.div`
   align-items: center;
   width: 25%;
   img {
-    width: 150px;
+    width: 180px;
   }
 `;
 

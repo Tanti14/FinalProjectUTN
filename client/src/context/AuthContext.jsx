@@ -47,7 +47,14 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  /* Funcion de eliminacion de errores */
+  /* Funcion para cerrar sesión */
+  const logout = () => {
+    Cookies.remove("token");
+    setIsAuth(false);
+    setUser(null);
+  };
+  
+  /* Funcion de eliminacion/desaparicion de errores en formularios */
   useEffect(() => {
     if (errores.length > 0) {
       const timer = setTimeout(() => {
@@ -90,7 +97,7 @@ export const AuthProvider = ({ children }) => {
 
   //prettier-ignore
   return (
-    <AuthContext.Provider value={{user, isAuth, errores, loading, signup, signin}}>
+    <AuthContext.Provider value={{user, isAuth, errores, loading, signup, signin, logout}}>
         {children}
     </AuthContext.Provider>
   );

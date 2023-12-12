@@ -1,5 +1,12 @@
 import React, { createContext, useContext, useState } from "react";
-import { createAdRequest, getAdsRequest } from "../api/ads.js";
+import {
+  createAdRequest,
+  getAdsRequest,
+  getAdRequest,
+  deleteAdRequest,
+  updateAdRequest,
+  getAllAdsRequest,
+} from "../api/ads.js";
 
 const AdContext = createContext();
 
@@ -16,21 +23,75 @@ export const useAds = () => {
 export const AdProvider = ({ children }) => {
   const [anuncios, setAnuncios] = useState([]);
 
-  const getAds = async () => {
+  const getAllAnuncios = async () => {
+    try {
+      const res = await getAllAdsRequest();
+      setAnuncios(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getAnuncios = async () => {
     try {
       const res = await getAdsRequest(anuncios);
       setAnuncios(res.data);
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  };
+
+  const getAnuncio = async (id) => {
+    try {
+      const res = await getAdRequest(id);
+      return res.data;
     } catch (error) {
       console.log(error);
     }
   };
 
   const createAnuncio = async (anuncio) => {
-    const res = await createAdRequest(anuncio);
-    console.log(res);
+    try {
+      const res = await createAdRequest(anuncio);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  const deleteAnuncio = async (id) => {
+    try {
+      const res = await deleteAdRequest(id);
+      if (res.status === 200)
+        setAnuncios(
+          anuncios.filter((anuncio) => anuncio._id !== id)
+        ); /* Con esto actualizo el estado de Anuncios para que, al borrar un anuncio de la pagina, se muestren automaticamente los anuncios restantes */
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateAnuncio = async (id, anuncio) => {
+    try {
+      const res = await updateAdRequest(id, anuncio);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <AdContext.Provider value={{ anuncios, getAds, createAnuncio }}>
+    <AdContext.Provider
+      value={{
+        anuncios,
+        setAnuncios,
+        getAllAnuncios,
+        getAnuncios,
+        getAnuncio,
+        createAnuncio,
+        deleteAnuncio,
+        updateAnuncio,
+      }}
+    >
       {children}
     </AdContext.Provider>
   );

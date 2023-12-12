@@ -10,14 +10,4 @@ export const FooterSectionContainer = styled.footer`
   background: #121314;
   color: white;
   padding: 30px;
-
-  /* @media (width <= 576px) {
-    font-size: 12px;
-    gap: 25px;
-  }
-
-  @media (width <= 414px) {
-    font-size: 8px;
-    gap: 20px;
-  } */
 `;

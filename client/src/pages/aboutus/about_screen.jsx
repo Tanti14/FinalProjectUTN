@@ -1,13 +1,21 @@
 import React from "react";
 import { AboutInfo, AboutSection, Header, TextContainer } from "./styles";
+import { NavSubFrame } from "../home/styles";
 
 export const AboutScreen = () => {
   return (
     <AboutSection>
+      <NavSubFrame>
+            <div>
+              <h1 className="text-2xl font-bold text-white">
+                Sobre nosotros
+              </h1>
+            </div>
+          </NavSubFrame>
       <AboutInfo>
         <Header>
-          <h1 className="font-bold text-3xl text-black">¡Bienvenidos a EMPRENTUC!</h1>
-          <h2 className="font-bold text-1xl text-black"> El corazón de los microemprendedores en Tucumán</h2>
+          <h1 className="font-bold text-3xl ">¡Bienvenidos a EMPRENTUC!</h1>
+          <h2 className="font-bold text-1xl"> El corazón de los microemprendedores en Tucumán</h2>
         </Header>
         <TextContainer>
           <p>

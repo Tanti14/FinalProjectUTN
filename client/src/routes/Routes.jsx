@@ -25,12 +25,9 @@ export const RoutesDef = () => {
 
               <Route element={<ProtectedRoute />}>
                 <Route path="/mis-anuncios" element={<Profile />} />
-                <Route path="/new-anuncio" index element={<AdFormPage />} />
-                <Route path="/anuncios/:id" index element={<AdFormPage />} />
+                <Route path="/new-anuncio" element={<AdFormPage />} />
+                <Route path="/anuncios/:id" element={<AdFormPage />} />
               </Route>
-
-              {/* Rutas para despues */}
-              <Route path="/anuncios" index element={<HomeScreen />} />
             </Routes>
           </Layout>
         </BrowserRouter>

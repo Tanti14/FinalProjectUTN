@@ -7,7 +7,7 @@ export const AboutSection = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 100px;
+  margin-top: 150px;
   background-image: url(${bg});
   background-size: cover;
   background-position: center;
@@ -26,7 +26,7 @@ export const AboutInfo = styled.div`
   gap: 15px;
  
 
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.55);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(6.6px);
@@ -39,6 +39,17 @@ export const Header = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  gap: 10px;
+
+  /* color: white; */
+  h1{
+    font-size: 50px;
+    font-weight: 800;
+  }
+  h2{
+    font-size: 30px;
+    font-weight: 600;
+  }
 `;
 
 export const TextContainer = styled.div`
@@ -50,4 +61,6 @@ export const TextContainer = styled.div`
   gap: 15px;
   font-size: 18px;
   text-align: justify;
+
+  /* color: white; */
 `;
