@@ -61,6 +61,4 @@ export const TextContainer = styled.div`
   gap: 15px;
   font-size: 18px;
   text-align: justify;
-
-  /* color: white; */
 `;

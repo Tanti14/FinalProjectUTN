@@ -9,57 +9,6 @@ export const HomeScreenContainer = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 150px;
-
-  /* Animaciones que utiliza la seccion */
-  @keyframes fade {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes slide-up {
-    from {
-      transform: translateY(100px);
-    }
-
-    to {
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes slide-right {
-    from {
-      transform: translateX(-100px);
-    }
-
-    to {
-      transform: translateX(0);
-    }
-  }
-`;
-
-export const NavSubFrame = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 50px;
-  padding: 0 30px;
-  background: grey;
-  border-top: 2px solid powderblue;
-  position: absolute;
-  top: 100px;
-  z-index: 3;
-
-  h1 {
-    opacity: 0;
-    animation: fade 0.9s ease-in forwards, slide-right 1.3s ease-in-out;
-    animation-delay: 0.2s;
-  }
 `;
 
 export const HomeScreenHero = styled.div`
@@ -140,6 +89,10 @@ export const HeroTextContainer = styled.div`
     h2 {
       font-size: 65px;
     }
+
+    p{
+      font-size: 20px;
+    }
   }
 `;
 
@@ -153,6 +106,31 @@ export const CardContainer = styled.div`
   padding: 50px;
   background-color: aliceblue;
   position: relative;
+`;
+
+export const NoCards = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+`;
+
+export const AllCards = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1300px;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 20px;
+  padding: 30px 0;
+
+  @media (width >= 1920px) {
+    max-width: 1750px;
+    width: 100%;
+    gap: 40px;
+  }
 `;
 
 export const GoUpBtn = styled.div`

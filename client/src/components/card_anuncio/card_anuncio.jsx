@@ -12,14 +12,17 @@ import { Link } from "react-router-dom";
 import { useAds } from "../../context/AdContext";
 import { FaWhatsapp } from "react-icons/fa";
 import Swal from "sweetalert2";
+import "animate.css";
 
 /* Libreria para formatear la fecha que llega desde la db */
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
+import { faker } from "@faker-js/faker";
 dayjs.extend(utc);
 /* ======================================================= */
 
 export const CardAnuncio = ({ anuncio }) => {
+  const randomImg = faker.image.url();
   const { deleteAnuncio } = useAds();
 
   const deleteAnuncioCheck = () => {
@@ -48,48 +51,50 @@ export const CardAnuncio = ({ anuncio }) => {
 
   return (
     <Card>
-      <CardActions>
-        {/* Boton Eliminar anuncio */}
-        <Link
-          onClick={() => { deleteAnuncioCheck();}}
-          className="flex justify-center items-center bg-red-600 w-7 h-7 rounded-md"
-        >
-          <FontAwesomeIcon icon={faTrashCan} />
-        </Link>
-
-        {/* Boton Editar anuncio */}
-        <Link
-          to={`/anuncios/${anuncio._id}`}
-          className="flex justify-center items-center bg-sky-600 w-7 h-7 rounded-md"
-        >
-          <FontAwesomeIcon icon={faPenToSquare} />
-        </Link>
-      </CardActions>
       <CardImgContainer>
-        <img src="https://via.placeholder.com/150" alt="" />
+        <img src={randomImg} alt="" />
       </CardImgContainer>
 
       <CardTextContainer>
         <h2>{anuncio.title}</h2>
         <p>{anuncio.description}</p>
         <p>
-          Anuncio creado: {dayjs(anuncio.createdAt).utc().format("DD/MM/YYYY")}
-        </p>
-        <p>
           Fecha del Evento: {dayjs(anuncio.date).utc().format("DD/MM/YYYY")}
         </p>
       </CardTextContainer>
 
       <ContactContainer>
-      <a
+        <a
           href={`https://wa.me/54${anuncio.user.phone}`}
           target="_blank"
-          className="flex justify-center items-center gap-1"
+          className="flex justify-center items-center gap-2 rounded-md"
         >
           <FaWhatsapp />
           Whatsapp
         </a>
       </ContactContainer>
+      
+      <CardActions>
+        {/* Boton Eliminar anuncio */}
+        <Link
+          onClick={() => {
+            deleteAnuncioCheck();
+          }}
+          className="flex justify-center items-center gap-2 text-white bg-red-600 p-2 w-[185px] rounded-md"
+        >
+          <FontAwesomeIcon style={{ color: "white" }} icon={faTrashCan} />
+          Eliminar
+        </Link>
+
+        {/* Boton Editar anuncio */}
+        <Link
+          to={`/anuncios/${anuncio._id}`}
+          className="flex justify-center items-center gap-2 text-white bg-sky-600 p-2 w-[185px] rounded-md"
+        >
+          <FontAwesomeIcon icon={faPenToSquare} />
+          Editar
+        </Link>
+      </CardActions>
     </Card>
   );
 };

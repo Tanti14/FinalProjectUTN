@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import {
+  AllCards,
   CardContainer,
   GoUpBtn,
   HeroGlassCard,
@@ -7,8 +8,9 @@ import {
   HeroTextContainer,
   HomeScreenContainer,
   HomeScreenHero,
-  NavSubFrame,
+  NoCards,
 } from "./styles";
+import { NavSubFrame } from "../../components/nav_subframe/NavSubFrame";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useAds } from "../../context/AdContext";
@@ -18,7 +20,6 @@ import { CardAnuncioView } from "../../components/card_anuncio_view/card_anuncio
 import Swal from "sweetalert2";
 import goup from "../../assets/img/goup.png";
 import rocket from "../../assets/img/svg/shoplaunch.svg";
-import "animate.css";
 
 export const HomeScreen = () => {
   const { isAuth, user, logout } = useAuth();
@@ -120,19 +121,19 @@ export const HomeScreen = () => {
         </HeroGlassCard>
       </HomeScreenHero>
       <CardContainer>
-        <h2>ANUNCIOS DESTACADOS</h2>
+        <h2 className="text-4xl">ANUNCIOS DESTACADOS</h2>
         {anuncios.length === 0 ? (
-          <>
-            <h1>NO HAY ANUNCIOS PARA MOSTRAR</h1>
-          </>
+          <NoCards>
+            <h1 className="text-4xl">NO HAY ANUNCIOS PARA MOSTRAR</h1>
+          </NoCards>
         ) : (
-          <>
+          <AllCards>
             {anuncios
               .map((anuncio) => (
                 <CardAnuncioView key={anuncio._id} anuncio={anuncio} />
               ))
               .reverse()}
-          </>
+          </AllCards>
         )}
         <GoUpBtn>
           <a href="#">

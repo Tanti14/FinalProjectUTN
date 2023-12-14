@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useAds } from "../../context/AdContext";
 import { useAuth } from "../../context/AuthContext";
-import { NavSubFrame } from "../home/styles";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { CardAnuncio } from "../../components/card_anuncio/card_anuncio";
@@ -13,6 +12,7 @@ import {
   NoContent,
   ProfileScreenContainer,
 } from "./styles";
+import { NavSubFrame } from "../../components/nav_subframe/NavSubFrame";
 
 export const Profile = () => {
   const { anuncios, setAnuncios, getAnuncios } = useAds();
@@ -57,13 +57,11 @@ export const Profile = () => {
       {isAuth && (
         <NavSubFrame>
           <div>
-            <h1 className="text-2xl font-bold text-white">
-              Mis anuncios activos
-            </h1>
+            <h1 className="text-2xl font-bold text-white">Mis anuncios</h1>
           </div>
 
           <div className="flex justify-center items-center gap-3 text-white">
-          <p>Bienvenido {user.nombre}!</p>
+            <p>Bienvenido {user.nombre}!</p>
             <Link
               to="/new-anuncio"
               className="bg-green-500 rounded-md px-3 py-1"
@@ -77,12 +75,13 @@ export const Profile = () => {
           </div>
         </NavSubFrame>
       )}
-      <MisAnunciosContainer>
-        {anuncios.length === 0 ? (
-          <NoContent>
-            <h1 className="text-2xl">No hay anuncios activos disponibles</h1>
-          </NoContent>
-        ) : (
+
+      {anuncios.length === 0 ? (
+        <NoContent>
+          <h1 className="text-2xl">No hay anuncios activos disponibles</h1>
+        </NoContent>
+      ) : (
+        <MisAnunciosContainer>
           <AnunciosDisponibles>
             {anuncios
               .map((anuncio) => (
@@ -90,8 +89,8 @@ export const Profile = () => {
               ))
               .reverse()}
           </AnunciosDisponibles>
-        )}
-      </MisAnunciosContainer>
+        </MisAnunciosContainer>
+      )}
     </ProfileScreenContainer>
   );
 };

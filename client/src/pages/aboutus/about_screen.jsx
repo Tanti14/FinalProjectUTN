@@ -1,6 +1,6 @@
 import React from "react";
 import { AboutInfo, AboutSection, Header, TextContainer } from "./styles";
-import { NavSubFrame } from "../home/styles";
+import { NavSubFrame } from "../../components/nav_subframe/NavSubFrame";
 
 export const AboutScreen = () => {
   return (

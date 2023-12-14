@@ -2,57 +2,73 @@ import styled from "styled-components";
 
 export const Card = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  height: 180px;
-  padding: 20px;
-  border: 2px solid black;
-  border-radius: 10px;
-  gap: 20px;
-`;
-
-export const CardActions = styled.div`
-  display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 10px;
+  width: 400px;
+  height: 550px;
+  border-radius: 10px;
+  gap: 8px;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.9);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.9);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.9);
 `;
 
 export const CardImgContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25%;
+  width: 100%;
   img {
-    width: 150px;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px 10px 0 0;
   }
 `;
 
 export const CardTextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  text-align: justify;
-  width: 50%;
-  height: 180px;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 20px;
+  gap: 10px;
+  width: 100%;
+  height: 230px;
+
+  h2 {
+    font-size: 26px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-align: center;
+  }
+
+  p {
+    font-size: 16px;
+    text-align: justify;
+  }
 `;
 
 export const ContactContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20%;
+  width: 100%;
 
   a {
     background-color: green;
     color: white;
-    padding: 5px 10px;
-    border-radius: 8px;
+    width: 95%;
+    padding: 10px;
     &:visited {
       color: white;
     }
   }
 `;
+
+export const CardActions = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+`;
+

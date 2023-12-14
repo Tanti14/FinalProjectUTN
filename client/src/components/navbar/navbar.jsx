@@ -37,7 +37,7 @@ export const Navbar = () => {
           </NavLink>
 
           <NavLink
-            to="/about"
+            to="/unknown"
             style={({ isActive }) => ({
               textDecoration: isActive ? "underline" : "none",
             })}
