@@ -16,7 +16,7 @@ const router = Router();
 
 /* Seteamos las rutas para el CRUD de los anuncios */
 /* CRUD: CREATE, READ, UPDATE, DELETE */
-router.get("/", getAllAnuncios)
+router.get("/", getAllAnuncios);
 router.get("/anuncios", authRequire, getAnuncios);
 router.get("/anuncios/:id", authRequire, getAnuncio);
 router.post("/anuncios", authRequire, validateSchema(createAnuncioSchema), createAnuncio);
