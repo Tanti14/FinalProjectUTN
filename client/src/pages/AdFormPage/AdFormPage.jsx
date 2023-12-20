@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAds } from "../../context/AdContext";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import {
   AdFormPageContainer,
@@ -10,7 +10,6 @@ import {
   GoBackBtn,
   StyledForm,
 } from "./styles";
-import img from "../../assets/img/svg/mobphonemarketing.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 

@@ -12,12 +12,11 @@ import { Link } from "react-router-dom";
 import { useAds } from "../../context/AdContext";
 import { FaWhatsapp } from "react-icons/fa";
 import Swal from "sweetalert2";
-import "animate.css";
+import { faker } from "@faker-js/faker";
 
 /* Libreria para formatear la fecha que llega desde la db */
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
-import { faker } from "@faker-js/faker";
 dayjs.extend(utc);
 /* ======================================================= */
 
